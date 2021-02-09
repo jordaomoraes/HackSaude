@@ -1,0 +1,32 @@
+<div class="card mb-3 text-center shadow" style="width: 19rem; margin:0 auto; margin-top:50px" >
+    <div class="card-header text-white bg-dark">
+        <h5>Login</h5>
+    </div>
+    <div class="card-body text-dark" >
+       <form action="/usuarios/login" method="POST">
+            <label for="cpf">Digite seu CPF </label>
+                <input type="text" name="cpf" id="cpf" maxlength="14" class="form-control cpf rounded" required>
+
+
+            <label class ="mt-2" >Senha </label>
+            <input type="password" name="senha" class="form-control rounded" required> <br>
+            <button class="btn btn-success rounded" type="submit">Acessar o Sistema</button>
+        </form>
+
+
+    </div>
+</div>
+
+
+<script>
+    window.campoCpf = document.getElementById("cpf")
+        campoCpf.addEventListener("input", function(){
+
+            //mascara
+            campoCpf.value = campoCpf.value.replace(/(\D)/g, "")
+            campoCpf.value = campoCpf.value.replace(/(\d{3})(\d)/,"$1.$2")
+            campoCpf.value = campoCpf.value.replace(/(\d{3})(\d)/,"$1.$2")
+            campoCpf.value = campoCpf.value.replace(/(\d{3})(\d{1,2})/,"$1-$2")
+        })
+</script>
+

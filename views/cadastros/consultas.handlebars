@@ -1,0 +1,87 @@
+<div class="nav mb-2 mt-4 mb-4">
+
+    <div class="card-header bg-dark text-white   shadow  rounded ">
+        <h3 class="card-title"> Orientações Médicas</h3>
+    </div>
+
+    <div class="nav-item ml-auto mr-4">
+        <a href="/consultas/add"><button class="btn btn-success text-white shadow">Pedir Nova Orientação</button></a>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-12 table-responsive ">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <th scope="col">Médico</th>
+                <th scope="col">Data</th>
+                <th scope="col">Respondida?</th>
+                <th scope="col">Tratamento</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                {{#each consultas}}
+                <tr>
+                    <td>{{medico.nome}}</td>
+                    <td> {{#formatDate data}}{{/formatDate}}</td>
+                    <td>{{realizada}}</td>
+                    <td> <a type="button" class="btn mb-2 btn-danger text-white btn-block mt-2" data-toggle="modal"
+                            data-target="#exampleModal">Exibir Orientações</a></td>
+                    <td></td>
+                </tr>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark text-white font-weight-bold ">
+                                <h5 class="modal-title" id="exampleModalLabel">Orientações Médicas - {{#formatDate data_orientacao}}{{/formatDate}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="sintomas" class="text-dark font-weight-bold"> Principais Sintomas </label>
+                                        <textarea name="sintomas" id="sintomas" class="form-control"
+                                            rows="5">{{sintomas}}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="orientacao" class="text-dark font-weight-bold">Orientações </label>
+                                        <textarea name="orientacao" id="orientacao" class="form-control"
+                                            rows="5">{{orientacao}}</textarea>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="medicacao" class="text-dark font-weight-bold">Medicação Recomendada
+                                        </label>
+                                        <textarea name="medicacao" id="medicacao" class="form-control"
+                                            rows="5">{{medicacao}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <tr>
+                    <td colspan="7">
+                        Nenhuma Consulta Agendada!
+                    </td>
+                </tr>
+
+
+
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

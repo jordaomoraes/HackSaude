@@ -1,0 +1,74 @@
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<div id="msg" class="alert alert-danger"></div>
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card shadow mb-2  rounded-top border border-dark" style="border-radius: 16px">
+            <div class="card-header text-white bg-primary">
+                <h4 class="card-title">Informe os Dados da Paciente</h4>
+            </div>
+            <div class="card-body">
+                <form class="needs-validation" action="/pacientes/novo" method="POST" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label for="nome" class="text-form">Nome Do Paciente </label>
+                            <input type="text" id="nome" name="nome" class="form-control" required>
+                        </div>
+                          <div class="col-md-2 mb-2">
+                            <label for="idade" class="text-form">Idade </label>
+                            <input type="text" id="idade" name="idade" class="form-control" required>
+                        </div>
+                         <div class="col-md-8 mb-2">
+                            <label for="obs" class="text-form">Observações </label>
+                            <input type="text" id="obs" name="obs" class="form-control" required>
+                        </div>
+                    </div>
+                   <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn mb-2 btn-primary btn-block text-white shadow">Cadastrar
+                                    </button>
+                            </div>
+                            <div class="col-md-2 ml-auto">
+                                <a href="/produtos" class="btn btn-danger btn-block text-white">
+                                    < Voltar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                window.msgErro = document.getElementById("msg")
+                msgErro.style.display = 'none'
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            msgErro.style.display = 'block'
+                            msgErro.innerHTML = "Preencha todos os campos!"
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+</script>

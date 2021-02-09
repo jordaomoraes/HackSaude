@@ -1,0 +1,68 @@
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card shadow mb-2  rounded-top border border-dark" style="border-radius: 16px">
+            <div class="card-header text-white bg-fundo-cadastro ">
+                <h5>Inserir Orientações Médicas - Pedido Feito no dia {{#formatDate pac.data}}{{/formatDate}}</h5>
+            </div>
+            <div class="card-body">
+                <form class="needs-validation" action="/consultas/edit" method="POST" novalidate>
+
+                    <input type="hidden" name="id" value="{{pac._id}}">
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-6">
+                            <label for="nome_paciente" class="text-dark font-weight-bold">Paciente </label>
+                            <input type="text" id="nome_paciente" name="nome_paciente" class="form-control"
+                                value="{{pac.nome_paciente}}" required>
+                        </div>
+                         <div class="col-md-3 mb-2">
+                            <label for="data" class="text-dark font-weight-bold">Data da Orientação </label>
+                            <input type="date" id="data_orientacao" name="data_orientacao" class="form-control"
+                                required>
+                        </div>
+                    </div>
+                       <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="sintomas" class="text-dark font-weight-bold">Sintomas </label>
+                           <textarea name="sintomas" id ="sintomas"class="form-control" rows="5" >{{pac.sintomas}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="orientacao" class="text-dark font-weight-bold">Orientações </label>
+                           <textarea name="orientacao" id ="orientacao"class="form-control" rows="5" >{{pac.orientacao}}</textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="medicacao" class="text-dark font-weight-bold">Medicação Recomendada </label>
+                           <textarea name="medicacao" id ="medicacao"class="form-control" rows="5" >{{pac.medicacao}}</textarea>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="submit" class="btn mb-2 bg-fundo-cadastro text-white  btn-block ">>Enviar Orientação</button>
+                    </div>
+                    <div class="col-md-2 ml-auto">
+                        <a href="/pacientes/consultas" class="btn btn-primary btn-block text-white">
+                            < Voltar</a>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        const inputDate = document.getElementById('data_orientacao')
+
+        inputDate.value = moment().format('YYYY-MM-DD')
+    })
+</script>

@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+        
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
+        aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="conteudoNavbarSuportado">
+        <ul class="navbar-nav ">
+            <li class="nav-item p-1">
+                <a href="/" type="button" class="btn btn-menu btn-block">Home</a>
+            </li>
+
+            {{#if user}}
+
+
+            {{#if user.emedico}}
+
+            <li class="nav-item dropdown p-1">
+                <button type="button" class="btn btn-menu btn-block" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Atendimentos</button>
+                <div class="dropdown-menu bg-menu ">
+                    <a class="dropdown-item bg-menu text-white" href="/">Pacientes</a>
+                    <a class="dropdown-item bg-menu text-white" href="/pacientes/consultas">Verificar Orientações</a>
+                </div>
+            </li>
+            {{/if}}
+
+            {{#if user.epaciente}}
+            <li class="nav-item dropdown p-1">
+                <button type="button" class="btn bg-menu text-white btn-block" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Orientações</button>
+                <div class="dropdown-menu bg-menu ">
+                    <a class="dropdown-item bg-menu text-white" href="/consultas">Pedir Orientação</a>
+                </div>
+            </li>
+
+            {{/if}}
+
+            {{/if}}
+
+    </div>
+
+    {{#if user}}
+
+    <ul class="nav collapse navbar-collapse justify-content-end" id="conteudoNavbarSuportado">
+
+        <li class="nav-item dropdown p-1 ">
+            <button type="button" class="btn bg-menu text-white btn-block" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"> Usuário - {{user.nome}} </button>
+            <div class="dropdown-menu bg-menu">
+            <a class="dropdown-item bg-menu text-white" href="/">Editar Dados</a>
+            </div>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link btn text-white bg-danger btn-block" href="/usuarios/logout">Sair</a>
+        </li>
+    </ul>
+
+
+    {{else}}
+
+    <ul class="nav collapse navbar-collapse justify-content-end" id="conteudoNavbarSuportado">
+        <li class="nav-item active">
+            <a class="nav-link text-white" href="/usuarios/login">Login</a>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/usuarios/registro">Registro</a>
+        </li>
+        </li>
+    </ul>
+
+
+    {{/if}}
+</nav>

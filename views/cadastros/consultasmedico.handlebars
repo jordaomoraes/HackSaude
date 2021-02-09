@@ -1,0 +1,38 @@
+<div class="nav mb-2 mt-4 mb-4">
+    <div class="card-header bg-dark text-white   shadow  rounded ">
+        <h3 class="card-title"> Orientações Requeridas</h3>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-md-12 table-responsive ">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <th scope="col">Paciente</th>
+                <th scope="col">Data</th>
+                <th scope="col">Sintomas</th>
+                <th scope="col">Tratamento</th>
+                <th scope="col">Já Atendido?</th>
+
+            </thead>
+            <tbody>
+                {{#each consultas}}
+                <tr>
+                    <td>{{nome_paciente}}</td>
+                    <td> {{#formatDate data}}{{/formatDate}}</td>
+                    <td>{{sintomas}}</td>
+                    <td> <a type="button" href="/consultas/addtratamento/{{paciente._id}}"
+                            class="btn mb-2 bg-dark text-white btn-block mt-2"> Detalhar</a></td>
+                    <td>{{realizada}}</td>
+
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="7">
+                        Nenhuma Consulta Agendada!
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

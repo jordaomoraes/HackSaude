@@ -1,0 +1,58 @@
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card shadow mb-2  rounded-top border border-dark" style="border-radius: 16px">
+            <div class="card-header text-white bg-fundo-cadastro">
+                <h4 class="card-title">Informe os motivos da Orientação</h4>
+            </div>
+            <div class="card-body">
+                <form class="needs-validation" action="/consultas/novo" method="POST" novalidate>
+                    <div class="form-row">
+
+                        <div class="col-md-3">
+                            <label for="nome_medico" class="text-form">Selecione seu Médico</label>
+                            <select name="medico" id="medico" class="custom-select" required>
+                                <option selected hidden value=""></option>
+                                {{#each medicos}}
+                                <option value="{{_id}}">{{nome}}</option>
+                                {{else}}
+                                <option value="0">Nenhum Médico Cadastrado!</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <label for="data" class="text-form">Data do Pedido </label>
+                            <input type="date" id="data" name="data" class="form-control" required>
+                        </div>
+                        <div class="col-md-8 mb-2 mt-4">
+                            <label for="sintomas" class="text-form"> Descreva em Detalhes os Sintomas </label>
+                            <textarea name="sintomas" id ="sintomas"class="form-control" rows="5" ></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn mb-2 bg-fundo-cadastro btn-block text-white shadow">Agendar
+                                </button>
+                            </div>
+                            <div class="col-md-2 ml-auto">
+                                <a href="/consultas" class="btn btn-danger btn-block text-white">
+                                    < Voltar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        const inputDate = document.getElementById('data')
+        inputDate.value = moment().format('YYYY-MM-DD')
+    })
+</script>

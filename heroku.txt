@@ -1,0 +1,28 @@
+//=>
+mongoURI:"mongodb://jera01:actual4941@mongodb.jera.agr.br/jera01"
+
+add .gitignore a pasta node_modules
+
+git init
+git add .
+git commit -am "initial commit"
+
+heroku login
+heroku create
+Criou aqui =>> https://nameless-forest-45712.herokuapp.com/ | https://git.heroku.com/nameless-forest-45712.git
+
+no heroku em deploy ver o comando abaixo
+heroku git:remote -a nameless-forest-45712
+git push heroku master
+heroku open
+
+heroku logs --tail
+
+para erro de connect
+    usuario do banco tem n�o deve ser admin...
+    no ip colocar alow access anyawere 0.0.0.0
+
+        mongoose.connect(db.mongoURI, {useNewUrlParser: true})
+
+
+
